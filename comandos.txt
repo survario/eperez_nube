@@ -1,0 +1,60 @@
+*Si nodemon está instalado de forma global, omita "npx" en los comandos nodemon
+
+//Ejecutar con nodemon* en modo FORK (establecido como modo default):
+npx nodemon index.js 
+
+//Ejecutar con nodemon* en modo CLUSTER:
+npx nodemon index.js CLUSTER
+
+//Verificar el número de procesos tomados por node, ingresar en OTRA terminal:
+tasklist /fi "imagename eq node.exe"
+
+//Finalizar los procesos
+taskkill /pid <NUMERO_PID> /f
+
+//Ejecutar con forever (en modo FORK y CLUSTER)
+forever index.js
+forever index.js CLUSTER
+
+//Listar los procesos por forever, ingresar en OTRA terminal:
+forever list
+
+//Finalizar los procesos de forever
+forever stopall
+
+//Ejecutar con PM2 (en modo FORK y CLUSTER)
+pm2 start index.js --name="server" --watch 
+pm2 start index.js --name="server" --watch -i max  
+
+//Listar los procesos por PM2, ingresar en OTRA terminal:
+pm2 list
+
+//Finalización de procesos en PM2
+pm2 stop all
+pm2 delete all
+
+//Redirigir las consultas a /api/randoms a un CLUSTER en el puerto 8081 con el módulo nativo de node CLUSTER
+node index.js CLUSTER 8081
+
+//El resto de las consultas redirigirlas a servidor individual en puerto 8080
+node index.js fork 8080
+
+//Modificar para que consultas a /api/randoms sean redirigidas a CLUSTER desde NGINX, en puertos 8082, 8083, 8084, 8085
+Revisar nginx.conf
+
+*Al levantar los servidores con forever, funciona sin problemas, pero cada puerto debe ser levantado en un terminal distinto.
+forever index.js fork 8082
+forever index.js fork 8083
+forever index.js fork 8084
+forever index.js fork 8085
+
+*Al intentarlo con pm2 (como en el after class) me da el siguiente error.
+Ejecutando:
+pm2 start index.js --name="server8082" --watch -- fork 8082
+Resultado:
+[PM2] Starting C:\Users\Emmanuel\Desktop\CoderHouse\eperez_balance\index.js in fork_mode (1 instance)
+[PM2] Done.
+[PM2] Applying action restartProcessId on app [8083](ids: [ '8082' ])
+[PM2][ERROR] Process 8082 not found
+
+*obteniendo el mismo resultado con los 4 puertos
