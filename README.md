@@ -1,5 +1,9 @@
-Emmanuel Perez - Desafío Leggers, Gzip y Análisis de Performance
+Emmanuel Perez - Desafío: Desplegar proyecto en la nube (Heroku)
 -------------------------------------------------------------
+
+Acceder a trvés del siguiente link:
+
+https://emperez.herokuapp.com/login
 
 El archivo INFORME.pdf contiene los resultados del Desafío Loggers, Gzip y Análisis de Performance.
 
@@ -13,34 +17,24 @@ En el mismo archivo nginx.conf, en la línea 54, se debe actualizar root, por la
 
 Antes de ejecutar la aplicación, 
 
-1. Levantar un servidor local mongoDB en una carpeta a elección (o utilizar una base online).
-
-2. Crear base de datos de nombre ecommerce en el servidor mongodb (use ecommerce)
-
-3. Ingrese en la terminal, ubicado en el directorio del proyecto, el comando:
+* Ingrese en la terminal, ubicado en el directorio del proyecto, el comando:
 
 - npm start
 
-A través del navegador, acceder a las rutas (reemplace <PORT> por el número de Puerto utilizado (por defecto 8080)):
+A través del navegador, acceder a las rutas:
 
-- localhost:<PORT>/info
+- https://emperez.herokuapp.com/info
 
-- localhost:<PORT>/login
+- https://emperez.herokuapp.com/login
 
-- localhost:<PORT>/registrar
+- https://emperez.herokuapp.com/registrar
 
-- localhost:<PORT>/api/productos-test (productos generados con faker)
+- https://emperez.herokuapp.com/api/productos-test (productos generados con faker)
 
 ------------------------------------------------------------------------
 
 
-La aplicación se conecta a una base de datos de nombre "ecommerce" en un servidor local de Mongo DB.
-
-URL: 'mongodb://localhost:27017/ecommerce'
-
-Para conectar a otra base de datos Mongo:
-
-En el archivo /index.js, reemplazar la URL de Mongo localhost por la URL correspondiente en las líneas 17 y 37.
+La aplicación se conecta a una base de datos de nombre "ecommerce" en un servidor Mongo DB Atlas.
 
 Las colecciones son users, mensajes, productos.
 
@@ -69,8 +63,6 @@ Dependencias utilizadas:
     faker,
 
     log4js,
-
-    minimist,
 
     mongoose,
 
