@@ -14,7 +14,7 @@ import { users } from "./models/users.js";
 import bcrypt from "bcrypt";
 
 import dburl from "./config.js";
-import parseArgs from "minimist";
+//import parseArgs from "minimist";
 import { fork } from "child_process";
 //desafio Balance de Carga
 import cluster from "cluster";
@@ -41,8 +41,11 @@ const loggerWarn = log4js.getLogger("warn");
 const loggerInfo = log4js.getLogger();
 
 //desafio Balance de Carga
-const MODO = process.argv[2] || "FORK";
-const PORT = process.argv[3] || 8080;
+//const MODO = process.argv[2] || "FORK";
+const MODO = "FORK"
+//const PORT = process.argv[3] || 8080; 
+//const PORT = parseInt(process.argv[3]) || 8080; 
+const PORT = process.env.PORT || 8080;
 
 const numCPUs = os.cpus().length;
 
@@ -357,6 +360,7 @@ app.use(session({
   }); 
 */
 
+/*
   app.get("/api/randoms", (req, res) => {
     let cant = req.query.cant || 100000000;
     //const randoms = fork(__dirname + "/randoms.js", ["--CANT", cant]);
@@ -365,6 +369,7 @@ app.use(session({
       res.end(JSON.stringify(response));
     });
   });
+*/
 
   app.get('/', (req, res) => {
     //loggerWarn.warn("ruta incorrecta");

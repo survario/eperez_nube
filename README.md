@@ -25,8 +25,6 @@ A través del navegador, acceder a las rutas (reemplace <PORT> por el número de
 
 - localhost:<PORT>/info
 
-- localhost:<PORT>/api/randoms
-
 - localhost:<PORT>/login
 
 - localhost:<PORT>/registrar
