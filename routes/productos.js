@@ -37,6 +37,7 @@ router.get('/productos/listar', async (req, res) => {
     res.json(await productos.getProducts())
 });
 
+/*
 router.get('/productos/listar/:id', async (req, res) => {
     res.json(await productos.getProducts(req.params.id))
 });
@@ -57,3 +58,4 @@ router.delete('/productos/borrar/:id', async (req, res) => {
     const id = req.params.id;
     res.json(await productos.deleteProduct(id));
 });
+*/
